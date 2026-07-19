@@ -1,6 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useActivity } from '../context/ActivityContext';
+import { callBudgetBuddy } from '../api/budgetBuddy';
+import CategoryChart from '../components/CategoryChart';
+import BudgetProgressList from '../components/BudgetProgressList';
+import TipsPanel from '../components/TipsPanel';
+import ErrorMessage from '../components/ErrorMessage';
+import LoadingDots from '../components/LoadingDots';
 import './Dashboard.css';
 
 const GREETING = (() => {
@@ -48,6 +54,38 @@ function timeAgo(date) {
 
 export default function Dashboard() {
   const { activity } = useActivity();
+  const [dataState, setDataState] = useState({
+    status: 'loading', // loading | success | error
+    categories: [],
+    latestTip: null,
+  });
+
+  const fetchDashboardData = async () => {
+    setDataState((prev) => ({ ...prev, status: 'loading' }));
+    try {
+      const res = await callBudgetBuddy('get_dashboard_data', 'dashboard');
+      if (res.status === 'ok') {
+        setDataState({
+          status: 'success',
+          categories: res.categories || [],
+          latestTip: res.latestTip || null,
+        });
+      } else {
+        throw new Error('Backend response status not ok');
+      }
+    } catch (err) {
+      console.error('Error fetching dashboard data:', err);
+      setDataState((prev) => ({ ...prev, status: 'error' }));
+    }
+  };
+
+  useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
+  const hasData =
+    dataState.categories.length > 0 &&
+    dataState.categories.some((c) => c.spent > 0);
 
   return (
     <div className="dashboard">
@@ -87,6 +125,50 @@ export default function Dashboard() {
             </Link>
           ))}
         </div>
+      </section>
+
+      {/* Dynamic Dashboard Section */}
+      <section className="dashboard-section">
+        <h2 className="dashboard-section-title">Spending Insights</h2>
+        
+        {dataState.status === 'loading' && (
+          <div className="dashboard-loading-card">
+            <p className="dashboard-loading-text">
+              Retrieving live financial analytics <LoadingDots />
+            </p>
+          </div>
+        )}
+
+        {dataState.status === 'error' && (
+          <div className="dashboard-error-card">
+            <ErrorMessage onRetry={fetchDashboardData} />
+          </div>
+        )}
+
+        {dataState.status === 'success' && !hasData && (
+          <div className="dashboard-empty-fallback" id="dashboard-empty-fallback">
+            <span className="dashboard-empty-fallback-icon" aria-hidden="true">🌱</span>
+            <p className="dashboard-empty-fallback-text">
+              Still building your picture — log a few more expenses and I'll start spotting patterns!
+            </p>
+          </div>
+        )}
+
+        {dataState.status === 'success' && hasData && (
+          <div className="dashboard-insights-container">
+            <div className="dashboard-grid">
+              <div className="dashboard-grid-left">
+                <CategoryChart categories={dataState.categories} />
+              </div>
+              <div className="dashboard-grid-right">
+                <BudgetProgressList categories={dataState.categories} />
+              </div>
+            </div>
+            <div className="dashboard-tips-row">
+              <TipsPanel latestTip={dataState.latestTip} />
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Activity Feed */}

@@ -1,0 +1,38 @@
+.budget-progress-bar-container {
+  margin-bottom: var(--space-4);
+}
+
+.budget-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-1);
+}
+
+.budget-progress-category {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.budget-progress-amounts {
+  color: var(--color-text-secondary);
+}
+
+.budget-progress-pct-text {
+  font-weight: 600;
+  font-size: var(--text-xs);
+}
+
+.budget-progress-track {
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.budget-progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.4s ease-out, background-color 0.3s ease;
+}

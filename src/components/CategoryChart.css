@@ -1,0 +1,19 @@
+.category-chart-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+.category-chart-title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-5);
+}
+
+.category-chart-wrap {
+  position: relative;
+  height: 260px;
+}
