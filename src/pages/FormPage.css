@@ -1,0 +1,163 @@
+/* Shared form page layout used by LogExpense, SetBudget, Summary */
+
+.form-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6) var(--space-16);
+}
+
+/* ── Card ── */
+.form-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── Field ── */
+.form-field {
+  margin-bottom: var(--space-5);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.form-label-optional {
+  font-weight: 400;
+  color: var(--color-text-tertiary);
+}
+
+.form-textarea,
+.form-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-family: inherit;
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  box-sizing: border-box;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.form-textarea::placeholder,
+.form-input::placeholder {
+  color: var(--color-text-tertiary);
+}
+
+.form-textarea:focus,
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-ring);
+}
+
+.form-textarea:disabled,
+.form-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: var(--color-surface);
+}
+
+.form-hint {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  margin: var(--space-2) 0 0 0;
+  line-height: 1.5;
+}
+
+/* ── Buttons ── */
+.form-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3) var(--space-6);
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+  min-width: 140px;
+}
+
+.form-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.form-btn:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.form-btn:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.form-btn--primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.form-btn--primary:not(:disabled):hover {
+  opacity: 0.9;
+}
+
+.form-btn--success {
+  background: var(--color-success);
+  color: #fff;
+}
+
+.form-btn--success:not(:disabled):hover {
+  opacity: 0.9;
+}
+
+.form-btn--purple {
+  background: #7C3AED;
+  color: #fff;
+}
+
+.form-btn--purple:not(:disabled):hover {
+  opacity: 0.9;
+}
+
+/* ── Tips ── */
+.form-tips {
+  margin-top: var(--space-6);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.form-tips-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.form-tips-list {
+  padding: 0 0 0 var(--space-5);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.form-tips-list li {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}

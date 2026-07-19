@@ -1,0 +1,130 @@
+/* ────────────────────────────────────────────────────────
+   BudgetBuddy — Global Design System
+   ──────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ── Design Tokens ── */
+:root {
+  /* Colors */
+  --color-primary:        #4F46E5;   /* indigo-600 */
+  --color-primary-soft:   #EEF2FF;   /* indigo-50 */
+  --color-primary-border: #C7D2FE;   /* indigo-200 */
+  --color-primary-ring:   rgba(79, 70, 229, 0.15);
+
+  --color-success:        #059669;   /* emerald-600 */
+  --color-success-soft:   #ECFDF5;
+  --color-success-border: #A7F3D0;
+  --color-success-text:   #065F46;
+
+  --color-warning:        #D97706;   /* amber-600 */
+  --color-warning-soft:   #FFFBEB;
+  --color-warning-border: #FDE68A;
+  --color-warning-text:   #92400E;
+
+  --color-error:          #DC2626;   /* rose-600 */
+  --color-error-soft:     #FFF1F2;
+  --color-error-border:   #FECDD3;
+  --color-error-text:     #9F1239;
+
+  /* Neutrals */
+  --color-bg:             #F8FAFC;
+  --color-surface:        #FFFFFF;
+  --color-border:         #E2E8F0;
+  --color-text-primary:   #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-tertiary:  #94A3B8;
+
+  /* Typography */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.25rem;
+  --text-2xl:  1.5rem;
+
+  /* Spacing (4px base) */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-5:  1.25rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+
+  /* Misc */
+  --transition:  200ms ease;
+  --max-width:   1100px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ── Accessibility ── */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Scrollbar (subtle) ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 99px;
+}
+
+/* ── Link reset ── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Button base reset ── */
+button {
+  cursor: pointer;
+}
+
+/* ── Utility ── */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}

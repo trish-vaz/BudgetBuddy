@@ -1,0 +1,71 @@
+.error-message {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--color-error-soft);
+  border: 1px solid var(--color-error-border);
+  border-left: 4px solid var(--color-error);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-4);
+  animation: fadeIn 200ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.error-message-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--color-error);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.error-message-body {
+  flex: 1;
+}
+
+.error-message-title {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-error-text);
+  margin: 0 0 var(--space-1) 0;
+}
+
+.error-message-detail {
+  font-size: var(--text-sm);
+  color: var(--color-error-text);
+  opacity: 0.85;
+  margin: 0 0 var(--space-3) 0;
+  line-height: 1.5;
+}
+
+.error-message-retry {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-error);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity var(--transition);
+}
+
+.error-message-retry:hover {
+  opacity: 0.88;
+}
