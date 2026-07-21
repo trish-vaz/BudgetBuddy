@@ -35,12 +35,21 @@ src/
 └── pages/            # Dashboard, LogExpense, SetBudget, Summary
 ```
 
+## Environment Variables
+
+Configure `VITE_N8N_WEBHOOK_URL` in your `.env` or deployment platform (e.g. Vercel):
+
+```env
+VITE_N8N_WEBHOOK_URL=https://trisha5523.app.n8n.cloud/webhook/budgetbuddy
+```
+
 ## Backend
 
-All AI logic runs on an n8n workflow at a single endpoint:
+All AI logic runs on an n8n workflow at a single endpoint configured via `VITE_N8N_WEBHOOK_URL`:
 
 ```
 POST https://trisha5523.app.n8n.cloud/webhook/budgetbuddy
 ```
 
-Actions: `log_expense` · `set_budget` · `get_summary`
+Actions: `log_expense` · `set_budget` · `get_summary` · `get_dashboard_data`
+

@@ -1,4 +1,4 @@
-const WEBHOOK_URL = 'https://trisha5523.app.n8n.cloud/webhook/budgetbuddy';
+const WEBHOOK_URL = import.meta.env.VITE_N8N_WEBHOOK_URL || 'https://trisha5523.app.n8n.cloud/webhook/budgetbuddy';
 const USER_ID = 'demo_user';
 
 /**
